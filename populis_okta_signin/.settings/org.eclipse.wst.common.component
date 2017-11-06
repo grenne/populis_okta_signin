@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="populis_okta_signin">
+    <wb-module deploy-name="populis_okta_signin_I">
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <property name="java-output-path" value="/populis_okta_signin/build/classes"/>
-        <property name="context-root" value="populis_okta_signin"/>
+        <property name="java-output-path" value="/populis_okta_signin_I/build/classes"/>
+        <property name="context-root" value="populis_okta_signin_I"/>
     </wb-module>
 </project-modules>

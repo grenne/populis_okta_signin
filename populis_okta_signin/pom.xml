@@ -8,7 +8,7 @@
   <name>oka_homologacao</name>
   <url>http://maven.apache.org</url>
   	<build>
-		<finalName>populis.okta.signin</finalName>
+		<finalName>populis_okta_signin_I</finalName>
 	    <resources>
 	        <resource>
 	            <directory>resources</directory>

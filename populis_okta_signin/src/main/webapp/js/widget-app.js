@@ -8,8 +8,8 @@ requirejs.config({
 });
 
 var ID_TOKEN_KEY = 'id_token';
-var orgUrl = 'https://dev-174943.oktapreview.com';
-var redirectUrl = 'https://flex.populisservicos.com.br/populis/';
+var orgUrl = 'https://flex.oktapreview.com';
+var redirectUrl = 'https://testaversao.populisservicos.com.br/populis/';
 var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
 
 define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaConfig) {
@@ -152,7 +152,7 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
       // err is an Error object (ConfigError, UnsupportedBrowserError, etc)
       displayError('Unexpected error authenticating user: ' + err.message);
       httpChannel.setRequestHeader("X-Hello", "World", false);
-      $(window.document.location).attr('href','http://localhost:8080/yggboard_server');
+      $(window.document.location).attr('href','https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do');
     });
   }
 
@@ -179,9 +179,18 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
     if (session.status === 'ACTIVE') {
       displayClaims(session);
       displayActions(true);
+      var objJson = {
+			atrUser: session.login,
+			atrToken: session.id
+			};
+      sethttp (objJson);
+//   	  var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + oktaSignIn.session.token;
+//	  session.setCookieAndRedirect(redirectUrl);
+      window.location.href = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + session.id;
     } else {
       console.log('user does not have an active session @ %s', OktaConfig.orgUrl);
-      renderWidget();
+      window.location.href = 'https://flexdev.oktapreview.com/';
+      //      renderWidget();
     }
   });
 });
