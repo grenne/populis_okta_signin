@@ -1,9 +1,9 @@
 
-function sethttp (objJson){
+function operacional (usersso){
 	var result = false;
 	$.ajax({
 		type: "POST",
-		url: 'https://flex.populisservicos.com.br/populisII-web/rest/user/token',
+		url: 'https://flex.populisservicos.com.br/populisII-web/rest/user?singleSignOnKey=' + usersso,
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         async: false,

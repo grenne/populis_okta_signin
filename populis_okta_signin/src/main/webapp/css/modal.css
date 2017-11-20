@@ -1,0 +1,70 @@
+@charset "ISO-8859-1";
+#mask {position:absolute;
+	z-index:9000;  
+	background-color:#000; 
+	display:none;
+}
+#boxes .window {
+	position:absolute;
+	width:440px;
+	height:50px;
+	display:none;
+	z-index:9999;
+	padding:20px;
+}
+
+/* Personalize a janela modal aqui. Você pode adicionar uma imagem de fundo. */
+#boxes #dialog {
+	width:250px;
+	height:150px;
+	background-color: #0080c0;
+}
+/* posiciona o link para fechar a janela */
+.close {
+display:block; 
+text-align:right;
+}  
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+.window {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 160px;
+  padding: 20px;
+  overflow: hidden;
+  border: none;
+  font: normal 16px/1 "Times New Roman", Times, serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background: #0199d9;
+  -webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) , 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) , 1px 1px 1px 0 rgba(0,0,0,0.3) ;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5) , 1px 1px 1px rgba(0,0,0,0.2) ;
+}

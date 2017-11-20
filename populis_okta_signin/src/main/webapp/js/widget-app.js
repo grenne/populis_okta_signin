@@ -8,8 +8,8 @@ requirejs.config({
 });
 
 var ID_TOKEN_KEY = 'id_token';
-var orgUrl = 'https://flex.oktapreview.com';
-var redirectUrl = 'https://testaversao.populisservicos.com.br/populis/';
+var orgUrl = 'https://flex.okta.com';
+var redirectUrl = 'https://flex.populisservicos.com.br/populis/';
 var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
 
 define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaConfig) {
@@ -183,13 +183,22 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
 			atrUser: session.login,
 			atrToken: session.id
 			};
-      sethttp (objJson);
+      if (sethttp (objJson)) {
 //   	  var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + oktaSignIn.session.token;
 //	  session.setCookieAndRedirect(redirectUrl);
-      window.location.href = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + session.id;
+    	  if (operacional){
+    		  modal(session);
+    	  }else{
+    		  window.location.href = 'https://flex.populisservicos.com.br/populisII-web/rest/user?token=' + session.id;
+    	  }
+      }else{
+    	  alert("Problemas na autenticação do Populis, tente mais tarde");
+      };
     } else {
       console.log('user does not have an active session @ %s', OktaConfig.orgUrl);
-      window.location.href = 'https://flexdev.oktapreview.com/';
+	  modal(session);
+      
+//      window.location.href = 'https://flex.okta.com';
       //      renderWidget();
     }
   });
