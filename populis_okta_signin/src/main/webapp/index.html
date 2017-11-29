@@ -39,17 +39,23 @@
 
     <!-- Render the login widget here -->
 
-<div id="boxes">
- <!-- modal para escolha do portal -->
-	<div id="dialog" class="window">
-		<b>Escolha a navegação</b><br><br>
-		<!-- Populis I -->
-		<button id="btn_operacional" class="btn" >Operacional</button >
-		<button id="btn_portal" class="btn">Portal</button >
+	<div id="boxes">
+	 <!-- modal para escolha do portal -->
+		<div id="dialog" class="window">
+			<b>Escolha a navegação</b><br><br>
+			<!-- Populis I -->
+			<button id="btn_operacional" class="btn" >Operacional</button ><br>
+			<button id="btn_portal" class="btn">Portal</button >
+		</div>
+		<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+		<div id="mask"></div>
+	 <!-- modal para escolha do portal -->
+		<div id="msg" class="window">
+			<b>Por favor faça o login no okta, se for consultor use a tela de login</b><br><br>
+		</div>
+		<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+		<div id="mask"></div>
 	</div>
-	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
-	<div id="mask"></div>
-</div>
   </body>
   
 	<script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/1.8.0/okta-auth-js.min.js" type="text/javascript"></script> 

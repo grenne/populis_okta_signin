@@ -12,7 +12,6 @@ function sethttp (objJson){
   	.done(function( data ) {
   	})
     .fail(function(data) {
-		result = false;
     })
    	.always(function(data) {
     	if (data.atrToken == objJson.atrToken) {

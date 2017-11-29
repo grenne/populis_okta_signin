@@ -187,7 +187,7 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
 //   	  var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + oktaSignIn.session.token;
 //	  session.setCookieAndRedirect(redirectUrl);
     	  if (operacional){
-    		  modal(session);
+    		  modal(session.id);
     	  }else{
     		  window.location.href = 'https://flex.populisservicos.com.br/populisII-web/rest/user?token=' + session.id;
     	  }
@@ -195,9 +195,9 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
     	  alert("Problemas na autenticação do Populis, tente mais tarde");
       };
     } else {
-      console.log('user does not have an active session @ %s', OktaConfig.orgUrl);
-	  modal(session);
-      
+		  msg();
+
+
 //      window.location.href = 'https://flex.okta.com';
       //      renderWidget();
     }

@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: 'Work Sans', Arial, Helvetica, sans-serif;
   min-height: 100%;
-  background: #2196F3;
+  background: #ffffff;
   color: #777;
 }
 img {
@@ -144,9 +144,11 @@ input:valid + .label {
   height: 2.5rem;
   line-height: 2.5rem;
   padding: 0 1.5rem;
+  padding-bottom: 10;
   color: white;
   background: #8E49E8;
   text-transform: uppercase;
+  text-align: center;
   border-radius: .25rem;
   letter-spacing: .2em;
   transition: background .2s;
