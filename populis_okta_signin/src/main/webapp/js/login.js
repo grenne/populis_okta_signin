@@ -20,7 +20,7 @@ $( "#confirm" ).click(function() {
 	  			atrToken: token
 	  		};
 		if (sethttp (objJson)) {
-	      	modal(token);
+			window.location.href = 'https://flex.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + token;
 	    }else{
 	    	$('#msgErr').html("Problemas na autenticação do Populis, entre em contato conosco");
 	    };
