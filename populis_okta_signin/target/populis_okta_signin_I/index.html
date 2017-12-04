@@ -12,6 +12,10 @@
     <![endif]-->
     <!-- Jquery -->
     <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- md5 -->
+    <script src="js/jquery.md5.js"></script>
+    <!-- main -->
+    <script src="js/main.js"></script>
 
     <!-- Core widget js and css -->
     <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/1.11.0/js/okta-sign-in.min.js" type="text/javascript"></script>
@@ -26,13 +30,17 @@
     <!-- JSON Web Token Syntax Highlighting 
     <script src="/js/highlight.min.js"></script>
     <link rel="stylesheet" href="css/highlight.min.css">
--->
-    <!-- App Script -->
-    <script data-main="js/widget-app" src="js/require.js"></script>
+    <!-- commons -->
+    <script src="js/commons.js"></script>
     <!-- Modal Script -->
     <script src="js/modal.js"></script>
     <!-- set http Script -->
     <script src="js/sethttp.js"></script>
+    <!-- navegacao -->
+    <script src="js/navegacao.js"></script>
+-->
+    <!-- App Script -->
+    <script data-main="js/widget-app" src="js/require.js"></script>
 
   </head>
   <body>
@@ -60,21 +68,5 @@
   
 	<script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-auth-js/1.8.0/okta-auth-js.min.js" type="text/javascript"></script> 
   
-  <script>
-// var authClient = new OktaAuth({
-//  	  url: 'https://flexdev.oktapreview.com/', 
-//  	  clientId: '0oabg7g2qxKzFnAOT0h7',
-//  	  redirectUri: 'https://flexdev.oktapreview.com/' 
-//  	});
-//
-//  var idToken = authClient.token.getWithRedirect({
-//  	  responseType: 'id_token'
-//  	});
-//  	
-//  var parse = authClient.token.parseFromUrl();
-//
-//  console.log(`hi ${idToken.claims.email}!`);
-
-  </script>
   
 </html>

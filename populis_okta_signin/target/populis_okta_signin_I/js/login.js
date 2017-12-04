@@ -11,16 +11,14 @@ $('msgErro').show();
 $( "#confirm" ).click(function() {
 	$('#msgErr').html("");
 	if (login($('#fieldUser').val(),$('#fieldPassword').val() )){
-		var date = new Date();
-		var time = date.getTime() +  $('#fieldPassword').val();
-		var token = $.md5(time);
+		var token = criaHash ($('#fieldUser').val());
 		$('#msgErr').html("");
 		var objJson = {
 	  			atrUser: sessionStorage.emailLogin,
 	  			atrToken: token
 	  		};
 		if (sethttp (objJson)) {
-	      	modal(token);
+			window.location.href = sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do?token=' + objJson.atrToken;
 	    }else{
 	    	$('#msgErr').html("Problemas na autenticação do Populis, entre em contato conosco");
 	    };
@@ -33,7 +31,7 @@ function login (user, password){
 	var result = false;
 	var pass = encodeURIComponent(password);
 	$.ajax({
-		url: 'https://flex.populisservicos.com.br/populisII-web/rest/user/email?login=' + user + '&pass=' + pass,
+		url: sessionStorage.url_populis + 'populisII-web/rest/user/email?login=' + user + '&pass=' + pass,
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         async: false,

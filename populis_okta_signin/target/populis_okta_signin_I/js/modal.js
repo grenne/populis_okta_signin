@@ -30,11 +30,11 @@ function modal(token, email){
 	$('#mask').fadeTo("slow",0.8);
 	
 	$('#btn_operacional').click(function (e) {
-		window.location.href = 'https://flex.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + token;
+		window.location.href = sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do?token=' + token;
 		$('#mask, .window').hide();
 	});
 	$('#btn_portal').click(function (e) {
-		window.location.href = 'https://flex.populisservicos.com.br/populisII-web/rest/user?token=' + token;
+		window.location.href = sessionStorage.url_populis + 'populisII-web/rest/user?token=' + token;
 		$('#mask, .window').hide();
 	});
 	$('#mask').click(function () {
@@ -71,7 +71,7 @@ function msg(){
 function verificarPerfil(email){
 	var result = portal;
 	$.ajax({
-		url: 'https://flex.populisservicos.com.br/populisII-web/rest/user/busca?singleSignOnKey=' + email,
+		url: sessionStorage.url_populis + 'populisII-web/rest/user/busca?singleSignOnKey=' + email,
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         async: false,
@@ -84,7 +84,7 @@ function verificarPerfil(email){
     	if (data.status == 200) {
     		result = testaPerfil(data);
     	}else{
-    		result = porat;
+    		result = porta;;
     	};
    	});
 	return result;	

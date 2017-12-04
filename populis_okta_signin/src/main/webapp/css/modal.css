@@ -7,7 +7,7 @@
 #boxes .window {
 	position:absolute;
 	width:440px;
-	height:50px;
+	height:250px;
 	display:none;
 	z-index:9999;
 	padding:20px;
@@ -15,8 +15,8 @@
 
 /* Personalize a janela modal aqui. Você pode adicionar uma imagem de fundo. */
 #boxes #dialog #msg{
-	width:250px;
-	height:150px;
+	width:450px;
+	height:250px;
 	background-color: #0080c0;
 }
 /* posiciona o link para fechar a janela */

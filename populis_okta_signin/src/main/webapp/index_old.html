@@ -36,9 +36,9 @@
       function (res) {
         if (res.status === 'SUCCESS') { 
 //            if (parameter == "popII"){
-//           	var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + res.session.token;
+//           	var redirectUrl = sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do?token=' + res.session.token;
 //            }else{
-//            	var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + res.session.token;
+//            	var redirectUrl = sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do?token=' + res.session.token;
 //            }
 			var objJson = {
 				atrUser: res.user.profile.login,

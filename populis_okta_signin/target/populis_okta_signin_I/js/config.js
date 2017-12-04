@@ -9,13 +9,11 @@
 }(this, function () {
 
     return {
-      orgUrl: 'https://flex.okta.com',
-      apiToken: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-//     authzIssuer: 'https://dev-174943.oktapreview.com//oauth2/aus8q4gst8vbUGzFp0h7',
-      clientId: '0oa8olpfbRKzj1ScC2p6',
-      idp: '0oa8olpfbRKzj1ScC2p6',
-      scopes: ['openid', 'email', 'profile', 'phone', 'address', 'groups'],
-      protectedScope: 'api:read'
+    orgUrl: sessionStorage.url_okta,
+    clientId: sessionStorage.id_okta,
+    idp: sessionStorage.id_okta,
+    scopes: ['openid', 'email', 'profile', 'phone', 'address', 'groups'],
+    protectedScope: 'api:read'
     };
 
 }));

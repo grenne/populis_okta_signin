@@ -8,8 +8,9 @@ requirejs.config({
 });
 
 var ID_TOKEN_KEY = 'id_token';
-var orgUrl = 'https://flex.okta.com';
-var redirectUrl = 'https://flex.populisservicos.com.br/populis/';
+//var orgUrl = 'https://flex.okta.com';
+var orgUrl = 'https://dev-174943.oktapreview.com';
+var redirectUrl = sessionStorage.url_populis + 'populis/';
 var oktaSignIn = new OktaSignIn({baseUrl: orgUrl});
 
 define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaConfig) {
@@ -152,7 +153,7 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
       // err is an Error object (ConfigError, UnsupportedBrowserError, etc)
       displayError('Unexpected error authenticating user: ' + err.message);
       httpChannel.setRequestHeader("X-Hello", "World", false);
-      $(window.document.location).attr('href','https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do');
+      $(window.document.location).attr('href',sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do');
     });
   }
 
@@ -175,31 +176,32 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
   });
 
   oktaSignIn.session.get(function(session) {
-    console.log(session);
+    //console.log(session);
     if (session.status === 'ACTIVE') {
       displayClaims(session);
       displayActions(true);
+      var token = criaHash (session.id);
       var objJson = {
 			atrUser: session.login,
-			atrToken: session.id
+			atrToken: token
 			};
-      if (sethttp (objJson)) {
-//   	  var redirectUrl = 'https://testeversao.populisservicos.com.br/populis/seguranca/login-default-form-submit.do?token=' + oktaSignIn.session.token;
-//	  session.setCookieAndRedirect(redirectUrl);
-    	  if (operacional){
-    		  modal(session.id);
-    	  }else{
-    		  window.location.href = 'https://flex.populisservicos.com.br/populisII-web/rest/user?token=' + session.id;
-    	  }
-      }else{
-    	  alert("Problemas na autenticação do Populis, tente mais tarde");
-      };
+      sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
     } else {
-		  msg();
-
-
-//      window.location.href = 'https://flex.okta.com';
-      //      renderWidget();
+    	msg();
     }
   });
 });
+
+function autenticado(token){
+	  if (operacional){
+		  modal(token);
+	  }else{
+		  window.location.href = sessionStorage.url_populis + 'populisII-web/rest/user?token=' + token;
+	  };
+};
+
+
+function naoAutenticado(){
+	$('#msg').html('Problemas na autenticação do Populis, tente mais tarde, se persistir entre contato conosco');
+	msg();
+};
