@@ -1,0 +1,1 @@
+function operacional(n){var a=!1;return $.ajax({type:"GET",url:sessionStorage.url_populis+"populisII-web/rest/user/busca?singleSignOnKey="+n,contentType:"application/json; charset=utf-8",dataType:"json",async:!1}).done(function(n){}).fail(function(n){a=!1}).always(function(n){for(var e=0;e<n.length;e++)5==n[e].atrIdPerfil&&(a=!0)}),a}

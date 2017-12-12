@@ -1,0 +1,1 @@
+unction criaHash(e){var a=new Date,n=a.getTime()+e,r=n;return r}

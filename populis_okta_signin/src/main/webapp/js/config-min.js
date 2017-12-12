@@ -1,0 +1,1 @@
+!function(e,o){"function"==typeof define&&define.amd?define([],o):"object"==typeof module&&module.exports?module.exports=o():e.OktaConfig=o()}(this,function(){return{orgUrl:sessionStorage.url_okta,clientId:sessionStorage.id_okta,idp:sessionStorage.id_okta,scopes:["openid","email","profile","phone","address","groups"],protectedScope:"api:read"}});
