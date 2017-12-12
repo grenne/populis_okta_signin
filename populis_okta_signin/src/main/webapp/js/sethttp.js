@@ -1,5 +1,5 @@
 
-function sethttp (objJson, autenticado, naoAutenticado, token){
+function sethttp (objJson, autenticado, naoAutenticado, token, login){
 	var result = false;
 	$.ajax({
 		type: "POST",
@@ -12,12 +12,12 @@ function sethttp (objJson, autenticado, naoAutenticado, token){
   	.done(function( data ) {
    		result = true;
    		if (autenticado){
-   			autenticado(token);
+   			autenticado(token, login);
    		};
   	})
 	.fail(function(data){
    		if (naoAutenticado){
-   			naoAutenticado(token);
+   			naoAutenticado(token, login);
    		};
    		result = false;
 	})
