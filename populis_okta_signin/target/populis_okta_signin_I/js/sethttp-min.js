@@ -1,0 +1,1 @@
+function sethttp(t,n,a,e,o){var s=!1;return $.ajax({type:"POST",url:sessionStorage.url_populis+"populisII-web/rest/user/token",contentType:"application/json; charset=utf-8",dataType:"json",async:!1,data:JSON.stringify(t)}).done(function(t){s=!0,n&&n(e,o)}).fail(function(t){a&&a(e,o),s=!1}).always(function(t){}),s}
