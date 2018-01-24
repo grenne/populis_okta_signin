@@ -16,7 +16,9 @@ function operacional (usersso){
     })
    	.always(function(data) {
    		for (var i = 0; i < data.length; i++) {
-			if (data[i].atrIdPerfil == 5){
+   			console.log ("Perfil - " + data[i].atrIdPerfil);
+   			console.log ("Usuario okta - " + usersso);
+			if (data[i].atrIdPerfil == 5 | data[i].atrIdPerfil == 6 |data[i].atrIdPerfil == 7 |data[i].atrIdPerfil == 8){
 				result=true;
 			};
 		};

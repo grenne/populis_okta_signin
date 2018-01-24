@@ -13,6 +13,8 @@ function sethttp (objJson, autenticado, naoAutenticado, token, login){
    		result = true;
    		if (autenticado){
    			autenticado(token, login);
+   			console.log ("userinicial-" + login + " retorno-" + data.atrUser);
+   			console.log ("tokeninicial-" + token + " retorno-" + data.atrToken);
    		};
   	})
 	.fail(function(data){
@@ -20,6 +22,7 @@ function sethttp (objJson, autenticado, naoAutenticado, token, login){
    			naoAutenticado(token, login);
    		};
    		result = false;
+   		console.log ("nao gravou token");
 	})
 	.always(function(data) {
    	});
