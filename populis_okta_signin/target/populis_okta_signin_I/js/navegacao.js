@@ -1,13 +1,13 @@
 
 function operacional (usersso){
 	var result = false;
-	
 	$.ajax({
-		type: "GET",
-		url: sessionStorage.url_populis + 'populisII-web/rest/user/busca?singleSignOnKey=' + usersso,
+		type: "POST",
+		url: sessionStorage.url_populis + 'populisII-web/rest/user?singleSignOnKey=' + usersso,
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         async: false,
+        data : JSON.stringify(objJson)
 	})
   	.done(function( data ) {
   	})
@@ -15,13 +15,11 @@ function operacional (usersso){
 		result = false;
     })
    	.always(function(data) {
-   		for (var i = 0; i < data.length; i++) {
-   			console.log ("Perfil - " + data[i].atrIdPerfil);
-   			console.log ("Usuario okta - " + usersso);
-			if (data[i].atrIdPerfil == 5 | data[i].atrIdPerfil == 6 |data[i].atrIdPerfil == 7 |data[i].atrIdPerfil == 8){
-				result=true;
-			};
-		};
+    	if (data.atrToken == objJson.atrToken) {
+    		result = true;
+    	}else{
+    		result = false;
+    	};
    	});
 	return result;
 };

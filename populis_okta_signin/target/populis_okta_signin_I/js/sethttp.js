@@ -1,5 +1,5 @@
 
-function sethttp (objJson, autenticado, naoAutenticado, token, login){
+function sethttp (objJson, autenticado, naoAutenticado, token){
 	var result = false;
 	$.ajax({
 		type: "POST",
@@ -12,17 +12,14 @@ function sethttp (objJson, autenticado, naoAutenticado, token, login){
   	.done(function( data ) {
    		result = true;
    		if (autenticado){
-   			autenticado(token, login);
-   			console.log ("userinicial-" + login + " retorno-" + data.atrUser);
-   			console.log ("tokeninicial-" + token + " retorno-" + data.atrToken);
+   			autenticado(token);
    		};
   	})
 	.fail(function(data){
    		if (naoAutenticado){
-   			naoAutenticado(token, login);
+   			naoAutenticado(token);
    		};
    		result = false;
-   		console.log ("nao gravou token");
 	})
 	.always(function(data) {
    	});
