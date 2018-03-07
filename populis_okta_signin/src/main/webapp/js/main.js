@@ -14,8 +14,9 @@ sessionStorage.id_okta = "0oad2il7ucrot53L50h7";
 */
 /* teste local */
 sessionStorage.url_populis = "http://localhost:8083/populisII-web/";
-sessionStorage.url_okta = "https://dev-174943.oktapreview.com";
-sessionStorage.id_okta = "0oad2il7ucrot53L50h7";
+sessionStorage.redirect_url = "http://localhost:8083/populis_okta_signin_I/";
+sessionStorage.url_okta = "https://dev-319186.oktapreview.com";
+sessionStorage.id_okta = "0oadyu8f4hOtUcyY00h7";
  
 /* produção 
 sessionStorage.url_populis = "https://flex.populisservicos.com.br/";

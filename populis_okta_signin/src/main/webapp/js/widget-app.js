@@ -128,8 +128,9 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
     // Success function - called at terminal states like authStatus SUCCESS or
     // when the recovery emails are sent (forgot password and unlock)
     function (res) {
+    	console.log ("username-" + res.username);
     	if (res.status === 'SUCCESS') { res.session.setCookieAndRedirect(orgUrl); }
-/*      if (res.status === 'SUCCESS') {
+      if (res.status === 'SUCCESS') {
         console.log('User %s succesfully authenticated %o', res.claims.email, res);
         oktaSignIn.tokenManager.add(ID_TOKEN_KEY, res);
 
@@ -139,7 +140,7 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
         displayActions(false);
         displayApiResources(res.idToken);
       }
-*/      else if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
+      else if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
         // res.username - value user entered in the forgot password form
         console.log('User %s sent recovery code via email to reset password', res.username);
       }
@@ -178,15 +179,16 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
   oktaSignIn.session.get(function(session) {
     //console.log(session);
     if (session.status === 'ACTIVE') {
-      displayClaims(session);
-      displayActions(true);
-      var token = criaHash (session.id);
-      var objJson = {
-			atrUser: session.login,
-			atrToken: token
-			};
-      alert ("login okta" + session.login);
-      sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
+    	if (getCode()){
+	    	displayClaims(session);
+	    	displayActions(true);
+	    	var token = criaHash (session.id);
+	    	var objJson = {
+				atrUser: session.login,
+				atrToken: token
+				};
+	    	sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
+    	};
     } else {
     	msg();
     }
