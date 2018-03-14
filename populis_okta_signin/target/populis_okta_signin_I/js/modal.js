@@ -19,11 +19,11 @@ function modal(token, email){
 	$('#dialog').show();
 
 	//armazena a largura e a altura da tela
-	var maskHeight = $(document).height();
-	var maskWidth = $(window).width();
+//	var maskHeight = $(document).height();
+//	var maskWidth = $(window).width();
 	
 	//Define largura e altura do div#mask iguais ás dimensões da tela
-	$('#mask').css({'width':maskWidth,'height':maskHeight});
+//	$('#mask').css({'width':maskWidth,'height':maskHeight});
 	
 	//efeito de transição
 	$('#mask').fadeIn(1000);
@@ -41,6 +41,35 @@ function modal(token, email){
 		$(this).hide();
 		$('.window').hide();
 	});
+
+    var target = $( this ),
+    brand = target.find( "h2" ).html(),
+    model = target.find( "p" ).html(),
+    short = target.attr( "id" ),
+    closebtn = '<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>',
+    header = '<div data-role="header"><h2>' + brand + ' ' + model + '</h2></div>',
+    img = '<img src="../images/dark_bg.png" alt="' + brand + '" class="photo">',
+    popup = '<div data-role="popup" id="popup-' + short + '" data-short="' + short +'" data-theme="none" data-overlay-theme="a" data-corners="false" data-tolerance="15"></div>';
+	// Create the popup.
+	$( header )
+	    .appendTo( $( popup )
+	        .appendTo( $.mobile.activePage )
+	        .popup() )
+	    .toolbar()
+	    .before( closebtn )
+	    .after( img );
+	// Wait with opening the popup until the popup image has been loaded in the DOM.
+	// This ensures the popup gets the correct size and position
+	$( ".photo", "#popup-" + short ).load(function() {
+	    // Open the popup
+	    $( "#popup-" + short ).popup( "open" );
+	    // Clear the fallback
+	    clearTimeout( fallback );
+	});
+	// Fallback in case the browser doesn't fire a load event
+	var fallback = setTimeout(function() {
+	    $( "#popup-" + short ).popup( "open" );
+	}, 2000);
 };
 
 function msg(){

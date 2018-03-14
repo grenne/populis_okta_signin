@@ -128,9 +128,8 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
     // Success function - called at terminal states like authStatus SUCCESS or
     // when the recovery emails are sent (forgot password and unlock)
     function (res) {
-    	console.log ("username-" + res.username);
     	if (res.status === 'SUCCESS') { res.session.setCookieAndRedirect(orgUrl); }
-      if (res.status === 'SUCCESS') {
+    	if (res.status === 'SUCCESS') {
         console.log('User %s succesfully authenticated %o', res.claims.email, res);
         oktaSignIn.tokenManager.add(ID_TOKEN_KEY, res);
 
@@ -182,29 +181,9 @@ define(['jquery', 'okta-widget', 'okta-config'], function($, OktaSignIn, OktaCon
     	if (getCode()){
 	    	displayClaims(session);
 	    	displayActions(true);
-	    	var token = criaHash (session.id);
-	    	var objJson = {
-				atrUser: session.login,
-				atrToken: token
-				};
-	    	sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
     	};
     } else {
     	msg();
     }
   });
 });
-
-function autenticado(token){
-	  if (operacional){
-		  modal(token);
-	  }else{
-		  window.location.href = sessionStorage.url_populis + 'populisII-web/rest/user?token=' + token;
-	  };
-};
-
-
-function naoAutenticado(){
-	$('#msg').html('Problemas na autenticação do Populis, tente mais tarde, se persistir entre contato conosco');
-	msg();
-};

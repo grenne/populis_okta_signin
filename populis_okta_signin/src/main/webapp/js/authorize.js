@@ -1,5 +1,5 @@
 /*
-https://dev-319186.oktapreview.com/oauth2/default/v1/authorize?client_id=0oadyu8f4hOtUcyY00h7&redirect_uri=http://localhost:8083/populis_okta_signin_I/&response_type=code&state=request-token-populis&scope=openid&nonce=populis_request
+shttps://dev-319186.oktapreview.com/oauth2/default/v1/authorize?client_id=0oadyu8f4hOtUcyY00h7&redirect_uri=http://localhost:8083/populis_okta_signin_I/&response_type=code&state=request-token-populis&scope=openid&nonce=populis_request
 	
 https://dev-319186.oktapreview.com/oauth2/default/v1/token?code=pLlgcJs2ludHjgJRgHFT&client_id=0oadyu8f4hOtUcyY00h7&client_secret=V7X5dmT7X0cqvaHs5fhfVgys2mcnMHjJjRkUGZmT&redirect_uri=http://localhost:8083/populis_okta_signin_I/&grant_type=authorization_code
 
@@ -21,14 +21,14 @@ if (parametrosDaUrl){
 			var variaveis = parametros[i].split("=");
 			switch (variaveis[0]) {
 			case "code": 
-				alert ("code:" + variaveis[1]);
-				code = variaveis[1];
-//					window.location.href = 'https://dev-319186.oktapreview.com/oauth2/default/v1/authorize?client_id=0oadyu8f4hOtUcyY00h7&redirect_uri=http://localhost:8083/populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&&code=' + variaveis[1];
-					window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&code=' + variaveis[1];
+				alert ("code I:" + variaveis[1]);
+				localStorage.code = variaveis[1];
+					window.location.href = sessionStorage.url_okta + 'oauth2/default/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&&code=' + variaveis[1];
+//					window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&code=' + variaveis[1];
 				break;
 			case "iss":
-//				window.location.href = 'https://dev-319186.oktapreview.com/oauth2/default/v1/authorize?client_id=0oadyu8f4hOtUcyY00h7&redirect_uri=http://localhost:8083/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
-				window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
+				window.location.href = sessionStorage.url_okta + 'oauth2/default/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
+//				window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
 			break;
 			case "state": alert ("state:" + variaveis[1]);
 				break;
@@ -46,23 +46,29 @@ if (parametrosDaUrl){
 			var variaveis = parametros[i].split("=");
 			switch (variaveis[0]) {
 			case "access_token": alert ("access-token:" + variaveis[1]);
-				getUserInfo(variaveis[1], code);
+				getUserInfo(variaveis[1], criaHash(variaveis[1].substring(1, 40)));
+				break;
+			case "code": 
+				alert ("code II:" + variaveis[1]);
+				localStorage.code = variaveis[1];
 				break;
 			default: alert (variaveis[0] + " : "  + variaveis[1]);
 				break;
 			}			
 		}
 	}else{
+		window.location.href = sessionStorage.url_okta + 'oauth2/default/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
 //		window.location.href = 'https://dev-319186.oktapreview.com/oauth2/default/v1/authorize?client_id=0oadyu8f4hOtUcyY00h7&redirect_uri=http://localhost:8083/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
-		window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
+//		window.location.href = 'https://flexdev.oktapreview.com/oauth2/default/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
 	}
 }
 
 function getUserInfo (accessToken, code){
+	alert ("token I:" + code);
 	$.ajax({
 		type: "POST",
 //	    url: 'http://localhost:8083/populis_okta_signin_I/rest/authorize/userinfo?dominio=https://dev-319186.oktapreview.com/&access-token=' + accessToken,
-	    url: 'https://testeversao.populisservicos.com.br/populis_okta_signin_I/rest/authorize/userinfo?dominio=https://flexdev.oktapreview.com/&access-token=' + accessToken,
+	    url: sessionStorage.dominio + 'populis_okta_signin_I/rest/authorize/userinfo?dominio=' +  sessionStorage.url_okta + '&access-token=' + accessToken,
 	    contentType: "application/json; charset=utf-8",
 	    dataType: 'json',
 		async : "false"
@@ -71,8 +77,8 @@ function getUserInfo (accessToken, code){
 		for (var i = 0; i < data.length; i++) {
 			var success = JSON.parse(data[i]);
 			alert ("success:" + data[i]);	
-			var login = success.preferred_username;
-//			testaLogin(login, code);
+			localStorage.login = success.preferred_username;
+			testaLogin(localStorage.login, code);
 		};
 	})
 	.fail(function(data) {
@@ -100,23 +106,24 @@ $.ajax({
 }
 
 function testaLogin(login, code){
+	alert ("token II:" + code);
 	var objJson = {
 			atrUser: login,
 			atrToken: code
 			};
-    	sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
+    sethttp (objJson, autenticado, naoAutenticado, objJson.atrToken);
 };
 
 function autenticado(token){
-	  if (operacional){
-		  modal(token);
+	alert ("token III:" + token);
+	  if (localStorage.perfil == "operacional"){
+		  window.location.href = sessionStorage.redirect_url + 'navegacao.html';
 	  }else{
-		  window.location.href = sessionStorage.url_populis + 'populisII-web/rest/user?token=' + token;
+		  window.location.href = sessionStorage.dominio + 'populisII-web/rest/user?token=' + token;
 	  };
 };
 
 
 function naoAutenticado(){
-	$('#msg').html('Problemas na autenticação do Populis, tente mais tarde, se persistir entre contato conosco');
-	msg();
+	alert ('Problemas na autenticação do Populis, tente mais tarde, se persistir entre contato conosco');
 };
