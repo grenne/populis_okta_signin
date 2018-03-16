@@ -1,9 +1,3 @@
-
-	localStorage.perfil = "portal";
-	if (localStorage.login != null){
-		localStorage.perfil = verificarPerfil(localStorage.login);
-	};
-
 	
 	document.getElementById('toggleProfile').addEventListener('click', function () {
 	  [].map.call(document.querySelectorAll('.profile'), function(el) {
@@ -23,65 +17,8 @@
 	$('#mask').css({'width':winW,'height':winH});
 	
 	$('#btn_operacional').click(function (e) {
-		window.location.href = sessionStorage.dominio + 'populis/seguranca/login-default-form-submit.do?token=' + localStorage.code;
+		window.location.href = sessionStorage.dominio + 'populis/seguranca/login-default-form-submit.do?token=' + localStorage.token;
 	});
 	$('#btn_portal').click(function (e) {
-		window.location.href = sessionStorage.dominio + 'populisII-web/rest/user?token=' + localStorage.code;
+		window.location.href = sessionStorage.dominio + 'populisII-web/rest/user?token=' + localStorage.token;
 	});
-
-	function operacional (usersso){
-		var result = false;
-		$.ajax({
-			type: "POST",
-			url: sessionStorage.dominio + 'populisII-web/rest/user?singleSignOnKey=' + usersso,
-	        contentType: "application/json; charset=utf-8",
-	        dataType: 'json',
-	        async: false,
-	        data : JSON.stringify(objJson)
-		})
-	  	.done(function( data ) {
-	  	})
-	    .fail(function(data) {
-			result = false;
-	    })
-	   	.always(function(data) {
-	    	if (data.atrToken == objJson.atrToken) {
-	    		result = true;
-	    	}else{
-	    		result = false;
-	    	};
-	   	});
-		return result;
-	};
-
-
-	function verificarPerfil(token){
-		var result = portal;
-		$.ajax({
-			url: sessionStorage.dominio + 'populisII-web/rest/user/busca?singleSignOnKey=' + token,
-	        contentType: "application/json; charset=utf-8",
-	        dataType: 'json',
-	        async: false,
-		})
-	  	.done(function( data ) {
-	  	})
-	    .fail(function(data) {
-	    })
-	   	.always(function(data) {
-	    	if (data.status == 200) {
-	    		result = testaPerfil(data);
-	    	}else{
-	    		result = porta;;
-	    	};
-	   	});
-		return result;	
-	};
-
-	function testaPerfil (perfis){
-		var result = portal;
-		for (var i = 0; i < perfis.length; i++) {
-			if (perfis[i].atrIdPerfil == 1){
-				result = operacional;
-			};
-		};	
-	};
