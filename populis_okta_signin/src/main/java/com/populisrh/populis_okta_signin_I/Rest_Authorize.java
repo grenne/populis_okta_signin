@@ -37,7 +37,7 @@ public class Rest_Authorize {
 
 	String result = "";
 	try {
-		String url = dominio + "oauth2/default/v1/userinfo";
+		String url = dominio + "oauth2/v1/userinfo";
 		String charset = "UTF-8";  // Or in Java 7 and later, use the constant: java.nio.charset.StandardCharsets.UTF_8.name()
 		String matricula = "1261";
 		String authorization = "Bearer " + accessToken;
@@ -72,7 +72,7 @@ public class Rest_Authorize {
 
 	ArrayList<Object> result = new ArrayList<>();
 	try {
-		String url = dominio + "oauth2/default/v1/userinfo";
+		String url = dominio + "oauth2/v1/userinfo";
 		String charset = "UTF-8";
 		String authorization = "Bearer " + accessToken;
 		String query = "";
