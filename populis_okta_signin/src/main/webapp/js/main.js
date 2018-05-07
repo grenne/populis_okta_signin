@@ -2,13 +2,6 @@
  * 
  */
 
-/* teste */
-sessionStorage.dominio = "https://testeversao.populisservicos.com.br/";
-sessionStorage.url_populis = "https://testeversao.populisservicos.com.br/populisII-web/";
-sessionStorage.redirect_url = "https://testeversao.populisservicos.com.br/populis_okta_signin_I/";
-sessionStorage.url_okta = "https://flexdev.oktapreview.com/";
-sessionStorage.id_okta = "0oabg7g2qxKzFnAOT0h7";
-
 /* teste 
 sessionStorage.url_populis = "https://flex.populisservicos.com.br/";
 sessionStorage.url_okta = "https://dev-174943.oktapreview.com/";
@@ -29,8 +22,20 @@ sessionStorage.redirect_url = "https://testeversao.populisservicos.com.br/populi
 sessionStorage.url_okta = "https://dev-319186.oktapreview.com/";
 sessionStorage.id_okta = "0oadyu8f4hOtUcyY00h7";
 */
-/* produção 
-sessionStorage.url_populis = "https://flex.populisservicos.com.br/";
-sessionStorage.url_okta = "https://flex.okta.com";
+
+/* produção */
+sessionStorage.url_populis = "https://flex.populisservicos.com.br/populisII-web/";
+sessionStorage.url_okta = "https://flex.okta.com/";
 sessionStorage.id_okta = "0oa8olpfbRKzj1ScC2p6";
+sessionStorage.redirect_url = "https://flex.populisservicos.com.br/populisII-web/";
+sessionStorage.dominio = "https://flex.populisservicos.com.br/";
+sessionStorage.dominio_okta_login = "https://flex.populisservicos.com.br/populis_okta_signin_I/";
+
+/* teste 
+sessionStorage.dominio = "https://testeversao.populisservicos.com.br/";
+sessionStorage.url_populis = "https://testeversao.populisservicos.com.br/populisII-web/";
+sessionStorage.redirect_url = "https://testeversao.populisservicos.com.br/populis_okta_signin_I/";
+sessionStorage.url_okta = "https://flexdev.oktapreview.com/";
+sessionStorage.id_okta = "0oabg7g2qxKzFnAOT0h7";
+sessionStorage.dominio_okta_login = "https://testeversao.populisservicos.com.br/populis_okta_signin_I/";
 */

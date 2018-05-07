@@ -17,8 +17,8 @@
 	$('#mask').css({'width':winW,'height':winH});
 	
 	$('#btn_operacional').click(function (e) {
-		window.location.href = sessionStorage.dominio + 'populis/seguranca/login-default-form-submit.do?token=' + localStorage.token;
+		window.location.href = sessionStorage.dominio + 'populis/seguranca/login-default-form-submit.do?token=' + sessionStorage.token;
 	});
 	$('#btn_portal').click(function (e) {
-		window.location.href = sessionStorage.dominio + 'populisII-web/rest/user?token=' + localStorage.token;
+		window.location.href = sessionStorage.dominio + 'populisII-web/rest/user?token=' + sessionStorage.token;
 	});
