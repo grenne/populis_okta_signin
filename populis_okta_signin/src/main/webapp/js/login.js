@@ -18,7 +18,7 @@ $( "#confirm" ).click(function() {
 	  			atrToken: token
 	  		};
 		if (sethttp (objJson)) {
-			window.location.href = sessionStorage.url_populis + 'populis/seguranca/login-default-form-submit.do?token=' + objJson.atrToken;
+			window.location.href = sessionStorage.dominio + 'populis/seguranca/login-default-form-submit.do?token=' + objJson.atrToken;
 	    }else{
 	    	$('#msgErr').html("Problemas na autenticação do Populis, entre em contato conosco");
 	    };
@@ -31,7 +31,7 @@ function login (user, password){
 	var result = false;
 	var pass = encodeURIComponent(password);
 	$.ajax({
-		url: sessionStorage.url_populis + 'populisII-web/rest/user/email?login=' + user + '&pass=' + pass,
+		url: sessionStorage.dominio + 'populisII-web/rest/user/email?login=' + user + '&pass=' + pass,
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
         async: false,
