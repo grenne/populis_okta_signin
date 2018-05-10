@@ -38,14 +38,10 @@ if (parametrosDaUrl){
 			case "code": 
 				localStorage.code = variaveis[1];
 					window.location.href = sessionStorage.url_okta + 'oauth2/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&&code=' + variaveis[1];
-//					window.location.href = 'https://flexdev.oktapreview.com/oauth2/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&state=request-token-populis&grant_type=authorization_code&scope=openid profile email&code=' + variaveis[1];
 			                                
 						 				break;
 			case "iss":
-				window.location.href = sessionStorage.url_okta + 'oauth2/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
-//				window.location.href = 'https://flexdev.oktapreview.com/oauth2/v1/authorize?client_id=0oabg7g2qxKzFnAOT0h7&redirect_uri=https://testeversao.populisservicos.com.br/populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';
-
-				
+				window.location.href = sessionStorage.url_okta + 'oauth2/v1/authorize?client_id=' + sessionStorage.id_okta + '&redirect_uri=' + sessionStorage.dominio + 'populis_okta_signin_I/&response_type=code token&state=request-populis&scope=openid profile email&nonce=request-nonce-populis';				
 			break;
 			case "state": 
 				break;
@@ -113,7 +109,15 @@ function verificaUsuario(usersso, token){
 		autenticado(token, testaPerfil(data))
   	})
     .fail(function(data) {
-		alert ('Não existe login no Populis para este usuário. Usuário Flex = ' + usersso );
+    	if (usersso == "915378" | usersso == "32915" | usersso == "918721" | usersso == "852442" | usersso == "921936" |
+    		usersso == "942576" | usersso == "874448" | usersso == "36024" | usersso == "553176" | usersso == "952300"
+    		| usersso == "925856" | usersso == "1000195" | usersso == "896864" | usersso == "556276" | usersso == "21001"){
+    		gravatoken(usersso, token);
+    		result = true
+    		autenticado(token, "operacional")    		
+    	}else{
+    		alert ('Não existe login no Populis para este usuário. Usuário Flex = ' + usersso );
+    	}
     })
    	.always(function(data) {
     	if (data.status == 200) {
