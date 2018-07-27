@@ -15,20 +15,6 @@ var url   = window.location.search.replace();
 var parametrosDaUrl = url.split("?")[1];
 var code = "";
 
-
-$.ajax({
-	url: sessionStorage.dominio + 'populisII-web/rest/user/busca?singleSignOnKey=61720',
-    contentType: "application/json; charset=utf-8",
-    dataType: 'json',
-    async: false,
-})
-.done(function( data ) {
-})
-.fail(function(data) {
-})
-.always(function(data) {
-});
-
 if (parametrosDaUrl){
 	var parametros = parametrosDaUrl.split("&");
 	if (parametros){
